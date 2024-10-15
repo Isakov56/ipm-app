@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterModule } from '@angular/router';
 import {MatTableModule} from '@angular/material/table';
-import { TableComponent } from './table/table.component';
-import {EmptyPageComponent} from './empty-page/empty-page.component';
+import { TableComponent } from './components/table/table.component';
+import {EmptyPageComponent} from './components/empty-page/empty-page.component';
 import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import {NavbarComponent} from './components/mainpage/navbar/navbar.component'
 //import { Router } from '@angular/router';
 
 
@@ -13,7 +14,7 @@ import { FormsModule } from '@angular/forms';
   
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,  MatTableModule, TableComponent, NgIf, FormsModule, EmptyPageComponent],
+  imports: [RouterOutlet,  MatTableModule, TableComponent, NgIf, FormsModule, EmptyPageComponent, RouterModule, NavbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
   
@@ -21,4 +22,8 @@ import { FormsModule } from '@angular/forms';
 export class AppComponent {
   title = 'NPM-app';
   model: string = '';
+
+  onButtonClick(){
+    console.log('the button is clicked')
+  }
 }

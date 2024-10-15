@@ -1,7 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { DataService } from '../data.service';
+import { DataService } from '../../data.service';
 import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 // import { NgIf } from '@angular/common';
 
@@ -30,7 +31,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [MatTableModule, NgIf, FormsModule],
+  imports: [MatTableModule, NgIf, FormsModule, RouterModule],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css'
 })

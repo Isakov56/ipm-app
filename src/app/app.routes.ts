@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EmptyPageComponent } from './empty-page/empty-page.component'; // Import your new component
+import { EmptyPageComponent } from './components/empty-page/empty-page.component'; // Import your new component
 
 const routes: Routes = [
   { path: 'empty-page', component: EmptyPageComponent }, // Add the route
