@@ -1,0 +1,37 @@
+.table-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .hover-button {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .table-container:hover .hover-button {
+    display: inline-block;
+  }
+  
+  .new-entry-form {
+    margin-top: 20px;
+  }
+  
+  .new-entry-form input {
+    margin-right: 10px;
+    padding: 5px;
+  }
+  
+  .new-entry-form button {
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
