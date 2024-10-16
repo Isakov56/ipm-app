@@ -20,7 +20,7 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule (if needed e
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,
-    MatToolbarModule
+    MatToolbarModule, 
     // Add other modules here if you have other components or services
     // FormsModule, // Only if you need forms in another module
     // RouterModule.forRoot(routes) // Only if you have routes defined here

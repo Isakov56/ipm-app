@@ -1,17 +1,19 @@
 import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { NavbarComponent } from './components/mainpage/navbar/navbar.component';
+import { HomeComponent } from './components/mainpage/home/home.component';
 
 
 import { AppComponent } from './app.component';
 import { TableComponent } from './components/table/table.component'
 import { EmptyPageComponent } from './components/empty-page/empty-page.component'; // Import your new component  
+import { FormComponent } from './components/form/form.component'; // Import your new component  
 
 export const routes = [
-  //{ path: '', component: AppComponent },
+  { path: '', component: HomeComponent },
   { path: 'table', component: TableComponent }, // Add your new component here
-  { path: 'empty-page', component: EmptyPageComponent }, // Add your new component here
+  { path: 'content', component: EmptyPageComponent }, // Add your new component here
+  { path: 'form', component: FormComponent }, // Add your new component here
   //{ path: '', component: NavbarComponent }, // Add your new component here
 ];
 //import { routes } from './app.routes';

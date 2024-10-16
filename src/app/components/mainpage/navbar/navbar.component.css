@@ -4,6 +4,11 @@
 
   .nav-link{
     cursor: pointer;
+    border-radius: 7px;
+  }
+  .nav-link.active{
+    cursor: pointer;
+    background-color: rgba(214, 214, 214, 0.541);
   }
 
   .nav-link:hover {

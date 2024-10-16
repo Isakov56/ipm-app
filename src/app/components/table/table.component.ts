@@ -31,7 +31,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [MatTableModule, NgIf, FormsModule, RouterModule],
+  imports: [MatTableModule, NgIf, FormsModule, RouterModule,],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css'
 })
@@ -58,8 +58,9 @@ export class TableComponent implements OnInit {
   addElement(): void {
     // Add the new entry to the tableData array
     if (this.newEntry.name && this.newEntry.weight && this.newEntry.symbol) {
+      this.dataService.addTableData({...this.newEntry})
       //this.tableData.push({ ...this.newEntry });
-      this.tableData = [...this.tableData, { ...this.newEntry }];
+      // this.tableData = [...this.tableData, { ...this.newEntry }];
       this.resetNewEntry(); // Clear input fields after adding
       this.showInputFields = false; // Hide input fields
       //this.tableData = [...this.tableData, { ...this.newEntry }]; // Create a new reference

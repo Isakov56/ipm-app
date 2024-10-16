@@ -7,6 +7,7 @@ import {EmptyPageComponent} from './components/empty-page/empty-page.component';
 import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {NavbarComponent} from './components/mainpage/navbar/navbar.component'
+//import {HomeComponent} from './components/mainpage/home/home.component'
 //import { Router } from '@angular/router';
 
 

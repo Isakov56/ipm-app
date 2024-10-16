@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-empty-page',
+  selector: 'content',
   standalone: true,
   imports: [RouterModule],
   templateUrl: './empty-page.component.html',

@@ -3,18 +3,21 @@
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="snav.toggle()">
         <mat-icon >menu</mat-icon>
     </button>
-    <span class="mx-2 nav-link" routerLink="/">Home</span>
-    <span class="mx-2 nav-link" routerLink="/table">Table</span>
-    <span class="mx-2 nav-link" routerLink="/empty-page">Content</span>
-    <span class="example-spacer"></span>
+    <div class="nav-link-container d-flex ">
+      <span class="mx-1 nav-link p-2" routerLink="/" [ngClass]="{'active': router.url === '/'}">Home</span>
+      <span class="mx-1 nav-link p-2" routerLink="/table" [ngClass]="{'active': router.url === '/table'}">Table</span>
+      <span class="mx-1 nav-link p-2" routerLink="/content" [ngClass]="{'active': router.url === '/content'}">Content</span>
+      <span class="mx-1 nav-link p-2" routerLink="/form" [ngClass]="{'active': router.url === '/form'}">Form</span>
+    </div>
+      <span class="example-spacer"></span>
     <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
         <mat-icon>favorite</mat-icon>
     </button>
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon>share</mat-icon>
     </button>
-    </mat-toolbar>
-    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 70 : 0">
+    </mat-toolbar >
+    <mat-sidenav-container class="example-sidenav-container" id="sidenav" [style.marginTop.px]="mobileQuery.matches ? 70 : 0">
       <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="64">
         <mat-nav-list>
           @for (nav of fillerNav; track nav) {
@@ -22,10 +25,10 @@
           }
         </mat-nav-list>
       </mat-sidenav>
-      <mat-sidenav-content>
+      <!-- <mat-sidenav-content>
         @for (content of fillerContent; track content) {
     <p>{{content}}</p>
   }
-      </mat-sidenav-content>
+      </mat-sidenav-content> -->
     </mat-sidenav-container>
 </div>
