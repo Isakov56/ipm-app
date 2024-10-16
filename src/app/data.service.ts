@@ -20,7 +20,7 @@ export class DataService {
     {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
   ])
 
-  private jsonUrl = 'assets/test.json'; // Path to your JSON file
+  private jsonUrl = 'assets/tableData.json'; // Path to your JSON file
 
   constructor(private http: HttpClient) {
     this.loadInitialData(); // Load initial data from the JSON file
