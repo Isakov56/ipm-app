@@ -2,6 +2,14 @@
     flex: 1 1 auto;
   }
 
+  .nav-link{
+    cursor: pointer;
+  }
+
+  .nav-link:hover {
+    cursor: pointer;
+  }
+
   .example-container {
     display: flex;
     flex-direction: column;
