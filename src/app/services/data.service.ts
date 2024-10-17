@@ -20,11 +20,11 @@ export class DataService {
 
   private loadInitialData(): void {
     console.log('my datrat')
-    this.loadingService.show(); // Push data to BehaviorSubject
-    this.http.get<any[]>(this.jsonUrl)
+    // this.loadingService.show(); 
+    this.http.get<any[]>(this.jsonUrl, { headers: { 'Cache-Control': 'no-cache' } })
     .pipe(
-      delay(5000),
-      tap(() => this.loadingService.hide()) // Add a delay of 2 seconds
+      delay(3000),
+      // tap(() => this.loadingService.hide()) 
     )
     .subscribe(data => {
       this.dataMy.next(data);

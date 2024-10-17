@@ -9,5 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './loading-spinner.component.css'
 })
 export class LoadingSpinnerComponent {
-  @Input() isLoading: boolean = true;
+  isLoading: boolean = false;
 }
