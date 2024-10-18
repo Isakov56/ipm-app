@@ -1,3 +1,22 @@
 .container{
     height: 70vh;
 }
+
+
+::ng-deep .error .mdc-notched-outline.mdc-notched-outline--upgraded {
+    background-color: #ff000023; /* Change to your desired color */
+  }
+
+  .error.border{
+    border-color: #ffacac !important;
+}
+
+.h-6{
+    font-size: 13px;
+}
+
+.inp{
+    color: black !important;
+    z-index: 999999 !important;
+    position: relative;
+}

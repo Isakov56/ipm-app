@@ -14,17 +14,15 @@ export class DataService {
 
   private jsonUrl = 'assets/tableData.json'; // Path to your JSON file
 
-  constructor(private http: HttpClient, private loadingService: LoadingService) {
+  constructor(private http: HttpClient) {
     this.loadInitialData(); // Load initial data from the JSON file
   }
 
   private loadInitialData(): void {
     console.log('my datrat')
-    // this.loadingService.show(); 
+ 
     this.http.get<any[]>(this.jsonUrl, { headers: { 'Cache-Control': 'no-cache' } })
     .pipe(
-      delay(3000),
-      // tap(() => this.loadingService.hide()) 
     )
     .subscribe(data => {
       this.dataMy.next(data);

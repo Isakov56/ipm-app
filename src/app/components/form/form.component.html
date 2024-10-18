@@ -1,31 +1,42 @@
 <div class=" container d-flex align-items-center justify-content-center">
-    <div class=" border d-flex align-items-center justify-content-center flex-column m-3 p-3">
-        <p>
-            <mat-form-field appearance="outline">
+    <div class=" border  d-flex align-items-center justify-content-center flex-column m-3 p-3" [class.error]="errorMessage">
+        <p class="d-flex flex-column">
+            <mat-form-field appearance="outline" [class.error]="errorMessage">
                 <mat-label>Name</mat-label>
-                <input matInput placeholder="Placeholder" [(ngModel)]="newEntry.name">
+                <input matInput class="inp" placeholder="Placeholder" [(ngModel)]="newEntry.name">
                 <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                 <mat-hint>Enter name of the component</mat-hint>
             </mat-form-field>
         </p>
         <p>
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" [class.error]="errorMessage">
                 <mat-label>Weight</mat-label>
-                <input matInput placeholder="Placeholder" [(ngModel)]="newEntry.weight">
+                <input class="inp" matInput placeholder="Placeholder" [(ngModel)]="newEntry.weight">
                 <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                 <mat-hint>Weight name of the component</mat-hint>
             </mat-form-field>
         </p>
         <p>
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" [class.error]="errorMessage">
                 <mat-label>Symbol</mat-label>
-                <input matInput placeholder="Placeholder" [(ngModel)]="newEntry.symbol">
+                <input class="inp" matInput placeholder="Placeholder" [(ngModel)]="newEntry.symbol">
                 <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                 <mat-hint>Symbol name of the component</mat-hint>
             </mat-form-field>
         </p>
         <div class="w-100 d-flex justify-content-end">
-            <button mat-flat-button class="" (click)="addElement()">Add</button>
+            <button *ngIf="!isSubmitted"  mat-flat-button class="" (click)="addElement()">Add</button>
+            <button *ngIf="isSubmitted && !errorMessage"  mat-flat-button class="" (click)="addElement()">
+                <div class="spinner-border spinner-border-sm" role="status">
+                    <span class="sr-only"></span>
+                  </div>
+            </button>
         </div>
+        <div *ngIf="errorMessage" class="text-danger h-6 w-100 d-flex justify-content-end">{{ errorMessage }}</div>
+        <div *ngIf="isSubmitted && !errorMessage" class="mt-2 alert alert-success d-flex justify-content-between align-items-center">
+            <span>
+              Added! Redirecting to table
+            </span>
+          </div>
     </div>
 </div>

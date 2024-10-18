@@ -8,7 +8,7 @@
   }
   .nav-link.active{
     cursor: pointer;
-    background-color: rgba(214, 214, 214, 0.541);
+    background-color: rgba(111, 184, 245, 0.541);
   }
 
   .nav-link:hover {
@@ -31,6 +31,7 @@
   left: 0;
   width: 100%; /* Full width */
   z-index: 1000; /* Ensures it's above other content */
+  background-color: rgb(209, 225, 255);
   }
   
   h1.example-app-name {
@@ -41,6 +42,9 @@
     /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
        causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
     flex: 1;
+    background-color: rgb(209, 225, 255) !important;
+
+    
   }
   
   .example-is-mobile .example-sidenav-container {
@@ -48,3 +52,16 @@
        `<body>` to be our scrolling element for mobile layouts. */
     flex: 1 0 auto;
   }
+
+  mat-sidenav{
+    background-color: rgb(209, 225, 255) !important;
+  }
+  a:hover{
+    background-color: rgba(111, 184, 245, 0.541) !important;  
+    outline: none !important;
+  }
+
+  a:focus {
+    outline: none !important; /* Remove default focus outline */
+    background-color: rgba(111, 184, 245, 0.541) !important; /* Prevent background color change */
+}

@@ -9,12 +9,14 @@ import { AppComponent } from './app.component';
 import { TableComponent } from './components/table/table.component'
 import { EmptyPageComponent } from './components/empty-page/empty-page.component'; // Import your new component  
 import { FormComponent } from './components/form/form.component'; // Import your new component  
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 export const routes = [
   { path: '', component: HomeComponent },
   { path: 'table', component: TableComponent }, // Add your new component here
   { path: 'content', component: EmptyPageComponent }, // Add your new component here
   { path: 'form', component: FormComponent }, // Add your new component here
+  { path: 'table', component: LoadingSpinnerComponent }, // Add your new component here
   //{ path: '', component: NavbarComponent }, // Add your new component here
 ];
 //import { routes } from './app.routes';
