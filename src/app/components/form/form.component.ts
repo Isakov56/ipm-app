@@ -74,6 +74,10 @@ export class FormComponent implements OnInit {
   addElement(): void {
     this.errorMessage = null;
 
+    const newId = this.newEntry.name;
+
+    console.log(newId, 'my new new newn ew')
+
     // Validate fields
     if (!this.newEntry.name || !this.newEntry.weight || !this.newEntry.symbol) {
       this.errorMessage = 'Please complete all fields';
@@ -91,7 +95,7 @@ export class FormComponent implements OnInit {
     this.resetNewEntry(); // Clear input fields after adding/updating
     this.isSubmitted = true; // Set submission state to true
     setTimeout(() => {
-      this.router.navigate(['/table']); // Navigate to the table component
+      this.router.navigate(['/table'], { queryParams: { highlightId: newId } }); // Navigate to the table component
     }, 2000); // 2000 milliseconds = 2 seconds
   }
 }

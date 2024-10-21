@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {MatTableModule} from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
+import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 export interface PeriodicElement {
   name: string;
@@ -19,7 +21,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [MatTableModule, NgIf, FormsModule, RouterModule, MatButtonModule],
+  imports: [MatTableModule, NgIf, FormsModule, RouterModule, MatButtonModule, CommonModule],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css'
 })
@@ -33,14 +35,24 @@ export class TableComponent implements OnInit {
   showButton = false; // Tracks whether the hover button is shown
   showInputFields = false; // Tracks whether the input fields are shown
   hoveredRowIndex: number | null = null;
+  highlightedId: string | null = null;
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.dataService.getTableData().subscribe(data => {
       this.tableData = data;
       console.log(data, 'ddddddddddd')
     });
+
+    this.route.queryParams.subscribe(params => {
+      this.highlightedId = params['highlightId'] || null;
+    });
+
+  }
+
+  isHighlighted(row: any): boolean {
+    return row.name === this.highlightedId;
   }
 
   addElement(): void {

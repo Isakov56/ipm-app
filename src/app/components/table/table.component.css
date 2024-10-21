@@ -43,3 +43,8 @@
   td.mat-column-description{
     width: 4rem;
   }
+  
+  .highlight-row {
+    background-color: #d4edda; /* Light yellow background */
+    transition: background-color 1s ease-in-out;
+  }
