@@ -69,16 +69,7 @@ export class AppComponent {
     window.addEventListener('resize', this.updateDeviceType.bind(this));
 
     // Listen to router events to hide the loading spinner when navigating away
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        // Check if the current route is not the table route
-        if (!this.router.url.includes('/table')) {
-          this.loadingService.hide(); // Hide spinner if not on table page
-        } else {
-          this.loadingService.show(); // Optionally show spinner when on table page
-        }
-      }
-    });
+
   }
 
   ngOnDestroy() {
