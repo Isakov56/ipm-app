@@ -39,3 +39,7 @@
     border: none;
     cursor: pointer;
   }
+
+  td.mat-column-description{
+    width: 4rem;
+  }

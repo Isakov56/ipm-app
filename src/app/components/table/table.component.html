@@ -1,20 +1,12 @@
 <div class="container d-flex align-items-center justify-content-center">
-  <div class="table-container">
+  <div class="table-container" >
     <table mat-table [dataSource]="tableData" class="mat-elevation-z8">
       
       <!-- Position Column -->
       <ng-container matColumnDef="position">
         <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element; let i = index" 
-        (mouseenter)="hoveredRowIndex = i; logRowInfo(i, element.name)"
-            (mouseleave)="hoveredRowIndex = null">
+        <td mat-cell *matCellDef="let element; let i = index" >
           {{ i + 1 }}
-          <button 
-            *ngIf="hoveredRowIndex === i" 
-            (click)="showInputFields = true" 
-            class="hover-button">
-            Add another element?
-          </button>
         </td>
       </ng-container>
       
@@ -33,11 +25,44 @@
       <!-- Symbol Column -->
       <ng-container matColumnDef="symbol">
         <th mat-header-cell *matHeaderCellDef> Symbol </th>
-        <td mat-cell *matCellDef="let element"> {{ element.symbol }} </td>
+        <td mat-cell *matCellDef="let element let i = index"> {{ element.symbol }}
+          <!-- <div class="button-mod d-flex align-items-center w-100 align-items-end justify-content-end " *ngIf="hoveredRowIndex === i +1 ">
+            <button class="me-1">
+              view
+            </button>
+            <button class="me-1">
+              add
+            </button>
+            <button class="me-1">
+              modify
+            </button>
+          </div> -->
+        </td>
+      </ng-container>
+
+      <!-- Description Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element ; let i = index" >
+          <div class="button-mod d-flex align-items-center w-100 align-items-end justify-content-end " *ngIf="hoveredRowIndex === i +1 ">
+            <button mat-flat-button class="me-1" [routerLink]="['/table', element.position]">
+              view 
+            </button>
+            <button mat-flat-button class="me-1" routerLink="/form/:id">
+              add
+            </button>
+            <button mat-flat-button class="me-1" [routerLink]="['/form', element.position]">
+              modify
+            </button>
+          </div>
+      </td>
       </ng-container>
       
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns; let element; let i = index" (mouseenter)="hoveredRowIndex = i+1;"
+      (mouseleave)="hoveredRowIndex = null">
+      
+    </tr>
     </table>
     
     <!-- New Entry Input Fields -->

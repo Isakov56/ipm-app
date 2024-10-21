@@ -1,0 +1,17 @@
+<!-- <h1></h1>
+<h1>{{this.entry.weight}}</h1>
+<h1>{{this.entry.symbol}}</h1> -->
+<div class="d-flex flex-column align-items-center justify-content-center">
+    <div class=" w-50 border mt-5">
+        <h3 class="border-bottom p-4 w-100">Element information</h3>
+        <div class="ps-4 ">
+            <h5>Name: {{this.entry.name}}</h5>
+            <h5>Weight: {{this.entry.weight}}</h5>
+            <h5>Symbol: {{this.entry.symbol}}</h5>
+        </div>
+        <div class="d-flex justify-content-end border-top p-3">
+            <button mat-flat-button class="me-1"  (click)="goBack()">back</button>
+            <button mat-flat-button class="me-1" [routerLink]="['/form', this.entry.position]" >modify</button>
+        </div>
+    </div>
+</div>

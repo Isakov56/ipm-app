@@ -3,6 +3,7 @@ import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { HomeComponent } from './components/mainpage/home/home.component';
 import { LoadingInterceptor } from './loading.interceptor';
+import { TableElementComponent } from './components/table-element/table-element.component';
 
 
 import { AppComponent } from './app.component';
@@ -15,8 +16,8 @@ export const routes = [
   { path: '', component: HomeComponent },
   { path: 'table', component: TableComponent }, // Add your new component here
   { path: 'content', component: EmptyPageComponent }, // Add your new component here
-  { path: 'form', component: FormComponent }, // Add your new component here
-  { path: 'table', component: LoadingSpinnerComponent }, // Add your new component here
+  { path: 'form/:id', component: FormComponent }, // Add your new component here // Add your new component here
+  { path: 'table/:id', component: TableElementComponent}
   //{ path: '', component: NavbarComponent }, // Add your new component here
 ];
 //import { routes } from './app.routes';

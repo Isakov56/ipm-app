@@ -13,6 +13,7 @@ import { LoadingService } from './services/loading.service';
 import { Observable } from 'rxjs';
 import { DeviceDetectionService } from './services/device-detection.service';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { TableElementComponent } from './components/table-element/table-element.component';
 
 
 
@@ -30,7 +31,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
     NavbarComponent,
     CommonModule,
     LoadingSpinnerComponent,
-    HttpClientModule
+    HttpClientModule, TableElementComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],

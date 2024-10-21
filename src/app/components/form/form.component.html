@@ -25,7 +25,7 @@
             </mat-form-field>
         </p>
         <div class="w-100 d-flex justify-content-end">
-            <button *ngIf="!isSubmitted"  mat-flat-button class="" (click)="addElement()">Add</button>
+            <button *ngIf="!isSubmitted"  mat-flat-button class="" (click)="addElement()">{{ entry ? 'Modify' : 'Add' }}</button>
             <button *ngIf="isSubmitted && !errorMessage"  mat-flat-button class="" (click)="addElement()">
                 <div class="spinner-border spinner-border-sm" role="status">
                     <span class="sr-only"></span>

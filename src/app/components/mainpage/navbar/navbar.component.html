@@ -7,7 +7,7 @@
       <span class="mx-1 nav-link p-2" routerLink="/" [ngClass]="{'active': router.url === '/'}">Home</span>
       <span class="mx-1 nav-link p-2" routerLink="/table" [ngClass]="{'active': router.url === '/table'}">Table</span>
       <span class="mx-1 nav-link p-2" routerLink="/content" [ngClass]="{'active': router.url === '/content'}">Content</span>
-      <span class="mx-1 nav-link p-2" routerLink="/form" [ngClass]="{'active': router.url === '/form'}">Form</span>
+      <span class="mx-1 nav-link p-2" routerLink="/form/:id" [ngClass]="{'active': router.url === '/form/:id'}">Form</span>
     </div>
       <span class="example-spacer"></span>
     <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">

@@ -4,6 +4,7 @@ import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {MatTableModule} from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
 
 export interface PeriodicElement {
   name: string;
@@ -18,12 +19,12 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [MatTableModule, NgIf, FormsModule, RouterModule,],
+  imports: [MatTableModule, NgIf, FormsModule, RouterModule, MatButtonModule],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css'
 })
 export class TableComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'description'];
 
   tableData: any[] = [];
   
@@ -32,9 +33,6 @@ export class TableComponent implements OnInit {
   showButton = false; // Tracks whether the hover button is shown
   showInputFields = false; // Tracks whether the input fields are shown
   hoveredRowIndex: number | null = null;
-  logRowInfo(index: number, name: string): void {
-    console.log('Hovered Row Index:', index, 'Name:', name);
-  }
 
   constructor(private dataService: DataService) {}
 

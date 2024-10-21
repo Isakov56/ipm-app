@@ -13,7 +13,6 @@ describe('LoadingInterceptor', () => {
 
     // Inject the LoadingService and create an instance of LoadingInterceptor
     loadingService = TestBed.inject(LoadingService);
-    interceptor = new LoadingInterceptor(loadingService);
   });
 
   it('should be created', () => {
