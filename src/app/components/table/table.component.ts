@@ -31,6 +31,10 @@ export class TableComponent implements OnInit {
 
   showButton = false; // Tracks whether the hover button is shown
   showInputFields = false; // Tracks whether the input fields are shown
+  hoveredRowIndex: number | null = null;
+  logRowInfo(index: number, name: string): void {
+    console.log('Hovered Row Index:', index, 'Name:', name);
+  }
 
   constructor(private dataService: DataService) {}
 

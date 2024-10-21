@@ -10,15 +10,16 @@ import { Observable } from 'rxjs';
   templateUrl: './loading-spinner.component.html',
   styleUrls: ['./loading-spinner.component.css']
 })
-export class LoadingSpinnerComponent implements OnInit {
+export class LoadingSpinnerComponent {
   // This will now hold the Observable from the LoadingService
   isLoading$!: Observable<boolean>;
 
   // Inject LoadingService in the constructor
   constructor(private loadingService: LoadingService) {}
 
-  // Subscribe to the loading$ observable from the LoadingService
   ngOnInit() {
-    this.isLoading$ = this.loadingService.loading$; // Bind the service's observable to the component
+    // Subscribe to the loading$ observable from LoadingService
+    this.isLoading$ = this.loadingService.loading$;
   }
+
 }
