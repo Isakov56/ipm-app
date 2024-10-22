@@ -36,10 +36,10 @@
             <button mat-flat-button class="me-1" [routerLink]="['/table', element.position]">
               view 
             </button>
-            <button mat-flat-button class="me-1" routerLink="/form/:id">
+            <button mat-flat-button class="me-1" routerLink="/form/add">
               add
             </button>
-            <button mat-flat-button class="me-1" [routerLink]="['/form', element.position]">
+            <button mat-flat-button class="me-1" [routerLink]="['/form/edit', element.position]">
               modify
             </button>
           </div>
@@ -47,7 +47,10 @@
       </ng-container>
       
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row [ngClass]="{ 'highlight-row': isHighlighted(row) }"
+      <tr mat-row [ngClass]="{
+        'highlight-row': isHighlighted(row), 
+        'fade-out': highlightedId === null && highlightedId !== row.name
+    }" 
       *matRowDef="let row; columns: displayedColumns; let element; let i = index" 
       (mouseenter)="hoveredRowIndex = i+1;"
       (mouseleave)="hoveredRowIndex = null" >

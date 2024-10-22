@@ -4,9 +4,9 @@
 
 
 ::ng-deep .error .mdc-notched-outline.mdc-notched-outline--upgraded {
-    background-color: #ff000023; /* Change to your desired color */
+    background-color: #ff000013; 
   }
-
+ 
   .error.border{
     border-color: #ffacac !important;
 }
@@ -17,6 +17,4 @@
 
 .inp{
     color: black !important;
-    z-index: 999999 !important;
-    position: relative;
 }

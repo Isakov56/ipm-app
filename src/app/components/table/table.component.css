@@ -45,6 +45,10 @@
   }
   
   .highlight-row {
-    background-color: #d4edda; /* Light yellow background */
+    background-color: #d4edda; 
     transition: background-color 1s ease-in-out;
+  }
+
+  .fade-out{
+    background-color: transparent;
   }

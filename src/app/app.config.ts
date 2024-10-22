@@ -16,7 +16,8 @@ export const routes = [
   { path: '', component: HomeComponent },
   { path: 'table', component: TableComponent }, // Add your new component here
   { path: 'content', component: EmptyPageComponent }, // Add your new component here
-  { path: 'form/:id', component: FormComponent }, // Add your new component here // Add your new component here
+  { path: 'form/add', component: FormComponent }, // For adding a new entry
+  { path: 'form/edit/:id', component: FormComponent },
   { path: 'table/:id', component: TableElementComponent}
   //{ path: '', component: NavbarComponent }, // Add your new component here
 ];

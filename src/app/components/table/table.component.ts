@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {MatTableModule} from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 export interface PeriodicElement {
@@ -37,23 +37,45 @@ export class TableComponent implements OnInit {
   hoveredRowIndex: number | null = null;
   highlightedId: string | null = null;
 
-  constructor(private dataService: DataService, private route: ActivatedRoute) {}
+  constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.dataService.getTableData().subscribe(data => {
       this.tableData = data;
       console.log(data, 'ddddddddddd')
+      if (this.highlightedId) {
+        setTimeout(() => {
+            this.highlightedId = null; // Clear the highlighted ID
+        }, 2000); // 3000 milliseconds = 3 seconds
+    }
     });
 
+    // Capture 'highlightId' from the query parameters
     this.route.queryParams.subscribe(params => {
       this.highlightedId = params['highlightId'] || null;
+
+      // If 'highlightId' exists, remove it from the URL after processing
+      if (!this.highlightedId) {
+        
+      }
     });
+    
 
   }
+
 
   isHighlighted(row: any): boolean {
     return row.name === this.highlightedId;
   }
+
+  highlightRow(row: any): void {
+    this.highlightedId = row.name; // Set the highlighted ID to the current row name
+
+    // Add a timeout to allow the highlight to fade
+    setTimeout(() => {
+        this.highlightedId = null; // Reset after 2 seconds or any other desired duration
+    }, 2000); // Adjust the time according to your needs
+}
 
   addElement(): void {
     // Add the new entry to the tableData array

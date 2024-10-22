@@ -1,42 +1,54 @@
-<div class=" container d-flex align-items-center justify-content-center">
-    <div class=" border  d-flex align-items-center justify-content-center flex-column m-3 p-3" [class.error]="errorMessage">
+<div class="container d-flex align-items-center justify-content-center">
+    <div class="border d-flex align-items-center justify-content-center flex-column m-3 p-3" [class.error]="errorMessage">
+      <form [formGroup]="newEntryForm" (ngSubmit)="onSubmit()">
         <p class="d-flex flex-column">
-            <mat-form-field appearance="outline" [class.error]="errorMessage">
-                <mat-label>Name</mat-label>
-                <input matInput class="inp" placeholder="Placeholder" [(ngModel)]="newEntry.name">
-                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                <mat-hint>Enter name of the component</mat-hint>
-            </mat-form-field>
+          <mat-form-field appearance="outline" [class.error]="newEntryForm.get('name')?.invalid && newEntryForm.get('name')?.touched">
+            <mat-label>Name</mat-label>
+            <input matInput class="inp" formControlName="name" placeholder="Placeholder" />
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Enter name of the component</mat-hint>
+            <mat-error *ngIf="newEntryForm.get('name')?.invalid && newEntryForm.get('name')?.touched">
+              Name is required.
+            </mat-error>
+          </mat-form-field>
         </p>
         <p>
-            <mat-form-field appearance="outline" [class.error]="errorMessage">
-                <mat-label>Weight</mat-label>
-                <input class="inp" matInput placeholder="Placeholder" [(ngModel)]="newEntry.weight">
-                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                <mat-hint>Weight name of the component</mat-hint>
-            </mat-form-field>
+          <mat-form-field appearance="outline" [class.error]="newEntryForm.get('weight')?.invalid && newEntryForm.get('weight')?.touched">
+            <mat-label>Weight</mat-label>
+            <input matInput class="inp" formControlName="weight" placeholder="Placeholder" />
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Weight of the component</mat-hint>
+            <mat-error *ngIf="newEntryForm.get('weight')?.invalid && newEntryForm.get('weight')?.touched">
+              Weight is required.
+            </mat-error>
+          </mat-form-field>
         </p>
         <p>
-            <mat-form-field appearance="outline" [class.error]="errorMessage">
-                <mat-label>Symbol</mat-label>
-                <input class="inp" matInput placeholder="Placeholder" [(ngModel)]="newEntry.symbol">
-                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                <mat-hint>Symbol name of the component</mat-hint>
-            </mat-form-field>
+          <mat-form-field appearance="outline" [class.error]="newEntryForm.get('symbol')?.invalid && newEntryForm.get('symbol')?.touched">
+            <mat-label>Symbol</mat-label>
+            <input matInput class="inp" formControlName="symbol" placeholder="Placeholder" />
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Symbol of the component</mat-hint>
+            <mat-error *ngIf="newEntryForm.get('symbol')?.invalid && newEntryForm.get('symbol')?.touched">
+              Symbol is required.
+            </mat-error>
+          </mat-form-field>
         </p>
         <div class="w-100 d-flex justify-content-end">
-            <button *ngIf="!isSubmitted"  mat-flat-button class="" (click)="addElement()">{{ entry ? 'Modify' : 'Add' }}</button>
-            <button *ngIf="isSubmitted && !errorMessage"  mat-flat-button class="" (click)="addElement()">
-                <div class="spinner-border spinner-border-sm" role="status">
-                    <span class="sr-only"></span>
-                  </div>
-            </button>
+          <button type="submit" *ngIf="!isSubmitted" mat-flat-button>
+            {{ isEditMode ? 'Modify' : 'Add' }}
+          </button>
+          <button *ngIf="isSubmitted && !errorMessage" mat-flat-button disabled>
+            <div class="spinner-border spinner-border-sm" role="status">
+              <span class="sr-only"></span>
+            </div>
+          </button>
         </div>
         <div *ngIf="errorMessage" class="text-danger h-6 w-100 d-flex justify-content-end">{{ errorMessage }}</div>
         <div *ngIf="isSubmitted && !errorMessage" class="mt-2 alert alert-success d-flex justify-content-between align-items-center">
-            <span>
-              Added! Redirecting to table
-            </span>
-          </div>
+          <span>Added! Redirecting to table</span>
+        </div>
+      </form>
     </div>
-</div>
+  </div>
+  
