@@ -7,6 +7,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { TableModule } from '../../modules/table-module/table-module.component';
 
 export interface PeriodicElement {
   name: string;
@@ -21,17 +22,29 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [MatTableModule, NgIf, FormsModule, RouterModule, MatButtonModule, CommonModule],
+  imports: [MatTableModule, NgIf, FormsModule, RouterModule, MatButtonModule, CommonModule, TableModule],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css'
 })
 export class TableComponent implements OnInit {
+
+  data = [
+    { id: 1, name: 'Alice', age: 25, occupation: 'Engineer' },
+    { id: 2, name: 'Bob', age: 30, occupation: 'Designer' },
+    { id: 3, name: 'Charlie', age: 35, occupation: 'Manager' }
+  ];
+
+  // Column configuration
+  columns = [
+    { key: 'name', header: 'Name' },
+    { key: 'age', header: 'Age' },
+    { key: 'occupation', header: 'Occupation' }
+  ];
+
+
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'description'];
-
   tableData: any[] = [];
-  
   newEntry = { name: '', weight: '', symbol: '' }; // Model for new entry
-
   showButton = false; // Tracks whether the hover button is shown
   showInputFields = false; // Tracks whether the input fields are shown
   hoveredRowIndex: number | null = null;

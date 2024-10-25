@@ -1,4 +1,4 @@
-<div class="d-flex align-items-center justify-content-center flex-column">
+<div *ngIf="!flowerData" class="d-flex align-items-center justify-content-center flex-column">
     <div class="h-50">
         <app-svg-display class="svg d-flex" ></app-svg-display>
         <h3 style="
@@ -8,3 +8,10 @@
         >There is nothing here</h3>
     </div>
 </div>
+
+<div class="p-5">
+    <h3>Flowers</h3>
+    <!-- <app-table-module [tableData]="flowerData" [tableColumns]="flowerColumns"></app-table-module> -->
+  </div>
+
+  <router-outlet></router-outlet>

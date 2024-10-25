@@ -1,27 +1,56 @@
-import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom } from '@angular/core';
-import { provideRouter, withComponentInputBinding } from '@angular/router';
+import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom, Component } from '@angular/core';
+import { provideRouter } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
-import { HomeComponent } from './components/mainpage/home/home.component';
 import { LoadingInterceptor } from './loading.interceptor';
-import { TableElementComponent } from './components/table-element/table-element.component';
-
-
-import { AppComponent } from './app.component';
-import { TableComponent } from './components/table/table.component'
-import { EmptyPageComponent } from './components/empty-page/empty-page.component'; // Import your new component  
-import { FormComponent } from './components/form/form.component'; // Import your new component  
-import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
-
 export const routes = [
-  { path: '', component: HomeComponent },
-  { path: 'table', component: TableComponent }, // Add your new component here
-  { path: 'content', component: EmptyPageComponent }, // Add your new component here
-  { path: 'form/add', component: FormComponent }, // For adding a new entry
-  { path: 'form/edit/:id', component: FormComponent },
-  { path: 'table/:id', component: TableElementComponent}
-  //{ path: '', component: NavbarComponent }, // Add your new component here
+  { 
+    path: '', 
+    //component: HomeComponent
+    loadComponent: () => import('./components/mainpage/home/home.component')
+    .then(component => component.HomeComponent)  
+  },
+  { 
+    path: 'table', 
+    // component: TableComponent
+    loadComponent: () => import('./components/table/table.component')
+    .then(component => component.TableComponent) 
+  },
+  { 
+    path: 'content', 
+    loadComponent: () => import('./components/empty-page/empty-page.component')
+    .then(component => component.EmptyPageComponent), 
+  },
+  {
+    path: 'content/table-module',
+    loadComponent: () => import('./modules/table-module/table-module.component')
+    .then(component => component.TableModule)
+  },
+  {
+    path: '',
+    loadComponent: () => import('./modules/table-module/table-module.component')
+    .then(component => component.TableModule)
+  },
+
+  { 
+    path: 'form/add', 
+    //component: FormComponent
+    loadComponent: () => import('./components/form/form.component')
+    .then(component => component.FormComponent)
+    
+  },
+  { 
+    path: 'form/edit/:id', 
+    //component: FormComponent 
+    loadComponent: () => import('./components/form/form.component')
+    .then(component => component.FormComponent)
+  },
+  { 
+    path: 'table/:id', 
+    //component: TableElementComponent
+    loadComponent: () => import('./components/table-element/table-element.component')
+    .then(component => component.TableElementComponent)
+  }
 ];
-//import { routes } from './app.routes';
 
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
@@ -29,7 +58,7 @@ export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes), 
     provideAnimationsAsync(), 
-    importProvidersFrom(HttpClientModule),
+    importProvidersFrom( HttpClientModule),
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
   ],
 };

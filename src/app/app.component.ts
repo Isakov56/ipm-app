@@ -1,19 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, RouterModule, Router, NavigationEnd } from '@angular/router';
-import { MatTableModule } from '@angular/material/table';
-import { TableComponent } from './components/table/table.component';
-import { EmptyPageComponent } from './components/empty-page/empty-page.component';
-import { NgIf, CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { RouterOutlet, RouterModule, Router } from '@angular/router';
 import { NavbarComponent } from './components/mainpage/navbar/navbar.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { LoadingInterceptor } from './loading.interceptor';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { LoadingService } from './services/loading.service';
 import { Observable } from 'rxjs';
 import { DeviceDetectionService } from './services/device-detection.service';
-import { trigger, transition, style, animate } from '@angular/animations';
-import { TableElementComponent } from './components/table-element/table-element.component';
+import { CommonModule } from '@angular/common';
+
+
 
 
 
@@ -21,34 +15,14 @@ import { TableElementComponent } from './components/table-element/table-element.
   selector: 'app-root',
   standalone: true,
   imports: [
+    CommonModule,
     RouterOutlet,
-    MatTableModule,
-    TableComponent,
-    NgIf,
-    FormsModule,
-    EmptyPageComponent,
     RouterModule,
     NavbarComponent,
-    CommonModule,
     LoadingSpinnerComponent,
-    HttpClientModule, TableElementComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
-  ],
-  animations: [
-    trigger('fadeInOut', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(-20px)' }),
-        animate('300ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
-      ]),
-      transition(':leave', [
-        animate('300ms ease-in', style({ opacity: 0, transform: 'translateY(-20px)' }))
-      ])
-    ])
-  ]
 })
 export class AppComponent {
   title = 'NPM-app';
