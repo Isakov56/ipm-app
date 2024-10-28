@@ -7,7 +7,8 @@ import {MatTableModule} from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { TableModule } from '../../modules/table-module/table-module.component';
+import { TableModule } from '../../shared/table-module/table-module.component';
+import { state } from '@angular/animations';
 
 export interface PeriodicElement {
   name: string;
@@ -22,7 +23,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [MatTableModule, NgIf, FormsModule, RouterModule, MatButtonModule, CommonModule, TableModule],
+  imports: [MatTableModule, NgIf, FormsModule, RouterModule, MatButtonModule, CommonModule, 
+    TableModule
+  ],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css'
 })
@@ -103,6 +106,22 @@ export class TableComponent implements OnInit {
 
   private resetNewEntry(): void {
     this.newEntry = { name: '', weight: '', symbol: '' };
+  }
+
+  onView(row: any) {
+    console.log('View row:', row);
+    //this.router.navigate(['/table/', row.id], {state: {row}})
+    // Add view logic here
+  }
+
+  onEdit(row: any) {
+    console.log('Edit row:', row);
+    // Add edit logic here
+  }
+
+  onDelete(row: any) {
+    console.log('Delete row:', row);
+    // Add delete logic here
   }
 
 }

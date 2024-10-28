@@ -7,7 +7,14 @@ export const routes = [
     path: '', 
     //component: HomeComponent
     loadComponent: () => import('./components/mainpage/home/home.component')
-    .then(component => component.HomeComponent)  
+    .then(component => component.HomeComponent),
+    children: [
+      {
+        path: 'table-home',
+        loadComponent: () => 
+          import('./shared/table-module/table-module.component').then((component) => component.TableModule)
+      }
+    ],   
   },
   { 
     path: 'table', 
@@ -18,18 +25,25 @@ export const routes = [
   { 
     path: 'content', 
     loadComponent: () => import('./components/empty-page/empty-page.component')
-    .then(component => component.EmptyPageComponent), 
+    .then(component => component.EmptyPageComponent),
+    children: [
+      {
+        path: 'table-module',
+        loadComponent: () => 
+          import('./shared/table-module/table-module.component').then((component) => component.TableModule)
+      }
+    ], 
   },
-  {
-    path: 'content/table-module',
-    loadComponent: () => import('./modules/table-module/table-module.component')
-    .then(component => component.TableModule)
-  },
-  {
-    path: '',
-    loadComponent: () => import('./modules/table-module/table-module.component')
-    .then(component => component.TableModule)
-  },
+  // {
+  //   path: 'content/table-module',
+  //   loadComponent: () => import('./modules/table-module/table-module.component')
+  //   .then(component => component.TableModule)
+  // },
+  // {
+  //   path: '',
+  //   loadComponent: () => import('./modules/table-module/table-module.component')
+  //   .then(component => component.TableModule)
+  // },
 
   { 
     path: 'form/add', 

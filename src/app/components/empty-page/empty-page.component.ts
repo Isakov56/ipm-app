@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ContentSvgComponent } from './content-svg/content-svg.component';
-import { TableModule } from '../../modules/table-module/table-module.component';
+// import { TableModule } from '../../modules/table-module/table-module.component';
 import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
@@ -9,7 +9,9 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'content',
   standalone: true,
-  imports: [RouterModule, ContentSvgComponent, TableModule, NgIf, RouterOutlet],
+  imports: [RouterModule, ContentSvgComponent, 
+    // TableModule, 
+    NgIf, RouterOutlet],
   templateUrl: './empty-page.component.html',
   styleUrl: './empty-page.component.css',
 })
@@ -37,20 +39,31 @@ export class EmptyPageComponent {
   ];
 
 
-constructor(private router: Router) {}
+constructor(public router: Router) {}
 
   navigateToTable() {
     this.router.navigate(['/content/table-module'], {
-      state: {
-        tableData: [
+      // state: {
+      //   tableData: [
+      //     { id: 1, name: 'Tiger', species: 'Panthera tigris' },
+      //     { id: 2, name: 'Elephant', species: 'Elephas maximus' }
+      //   ],
+      //   tableColumns: [
+      //     { key: 'id', header: 'ID' },
+      //     { key: 'name', header: 'Name' },
+      //     { key: 'species', header: 'Species' }
+      //   ]
+      // }
+      queryParams: {
+        tableData: JSON.stringify([
           { id: 1, name: 'Tiger', species: 'Panthera tigris' },
           { id: 2, name: 'Elephant', species: 'Elephas maximus' }
-        ],
-        tableColumns: [
+        ]),
+        tableColumns: JSON.stringify([
           { key: 'id', header: 'ID' },
           { key: 'name', header: 'Name' },
           { key: 'species', header: 'Species' }
-        ]
+        ])
       }
     });
   }

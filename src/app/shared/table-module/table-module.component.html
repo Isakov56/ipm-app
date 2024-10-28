@@ -1,0 +1,22 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th *ngFor="let column of tableColumns">{{ column.header }}</th>
+        <th *ngIf="isAnyRowHovered()">Actions</th> <!-- Add an Actions column -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of tableData" (mouseover)="row.hovered = true" (mouseleave)="row.hovered = false">
+        <td *ngFor="let column of tableColumns">{{ row[column.key] }}
+            
+        </td>
+        
+        <!-- Action Buttons, shown on hover -->
+        <td *ngIf="isAnyRowHovered()">
+          <button *ngIf="row.hovered" (click)="viewRow(row)" class="action-btn">View</button>
+          <button *ngIf="row.hovered" (click)="editRow(row)" class="action-btn">Edit</button>
+          <button *ngIf="row.hovered" (click)="deleteRow(row)" class="action-btn">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

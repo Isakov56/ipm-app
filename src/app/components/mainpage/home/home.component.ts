@@ -1,17 +1,22 @@
 import { Component } from '@angular/core';
 import {SvgDisplayComponent} from './svg-display/svg-display.component'
-import { TableModule } from '../../../modules/table-module/table-module.component';
+import { TableModule } from '../../../shared/table-module/table-module.component';
 import { NgIf } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SvgDisplayComponent, TableModule, NgIf, RouterOutlet],
+  imports: [SvgDisplayComponent,
+    //TableModule, 
+    NgIf, RouterOutlet, RouterLink, TableModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  constructor(public router: Router){}
  flowerData = [
     { id: 1, name: 'Rose', color: 'Red', bloomingSeason: 'Spring', nativeRegion: 'Asia' },
     { id: 2, name: 'Tulip', color: 'Various', bloomingSeason: 'Spring', nativeRegion: 'Central Asia' },

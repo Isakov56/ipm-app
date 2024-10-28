@@ -69,7 +69,13 @@
 </div>
 <div class="p-5">
   <h3>People</h3>
-  <app-table-module [tableData]="data" [tableColumns]="columns"></app-table-module>
+  <app-table-module 
+  [tableData]="data" 
+  [tableColumns]="columns" 
+  (view)="onView($event)" 
+  (edit)="onEdit($event)" 
+  (delete)="onDelete($event)">
+</app-table-module>
 </div>
 
 

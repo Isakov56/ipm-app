@@ -14,11 +14,12 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class TableElementComponent implements OnInit {
   
-  constructor(private dataService: DataService, private location: Location, private route: ActivatedRoute) {}
+  constructor(private dataService: DataService, private location: Location, private route: ActivatedRoute, private router: Router) {}
 
   tableData: any[] = [];
   errorMessage: string | null = null;
   entry: any; // This will hold the current entry for editing
+  rowData: any; //
 
   goBack(): void {
     this.location.back();
@@ -47,6 +48,10 @@ export class TableElementComponent implements OnInit {
       this.tableData = data
     })
 
-
+    const navigation = this.router.getCurrentNavigation();
+    console.log('Received data from module table', navigation);
+    if (navigation && navigation.extras.state) {
+        this.rowData = navigation.extras.state['row'];
+    }
   }
 }
