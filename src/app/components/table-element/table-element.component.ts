@@ -32,10 +32,8 @@ export class TableElementComponent implements OnInit {
       this.tableData = data;
       this.route.params.subscribe(params => {
         const id = params['id'];
-        this.tableData.forEach(e => {
-      });
-
-        if (id) {
+        console.log('Received name:', name);
+        if (id ) {
              // Enable edit mode
             // Convert id to the same type if necessary
             
@@ -43,15 +41,17 @@ export class TableElementComponent implements OnInit {
             console.log(this.entry, "mye entrydfsgdfgsdfg");
 
             
+        }else{
+          this.entry = {name: name}
         }
+        
     });
       this.tableData = data
     })
 
-    const navigation = this.router.getCurrentNavigation();
-    console.log('Received data from module table', navigation);
-    if (navigation && navigation.extras.state) {
-        this.rowData = navigation.extras.state['row'];
-    }
+    this.route.queryParams.subscribe(params => {
+      const name = params['name'];
+      console.log('Received name:', name);
+    });
   }
 }

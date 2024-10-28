@@ -9,13 +9,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TableModule } from '../../shared/table-module/table-module.component';
 import { state } from '@angular/animations';
+import { PeriodicElement } from '../../../assets/model';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+// export interface PeriodicElement {
+//   name: string;
+//   position: number;
+//   weight: number;
+//   symbol: string;
+// }
 
 const ELEMENT_DATA: PeriodicElement[] = [
 ];
@@ -110,7 +111,7 @@ export class TableComponent implements OnInit {
 
   onView(row: any) {
     console.log('View row:', row);
-    //this.router.navigate(['/table/', row.id], {state: {row}})
+    // this.router.navigate(['/table', row.id], { queryParams: { name: row.name } });
     // Add view logic here
   }
 
