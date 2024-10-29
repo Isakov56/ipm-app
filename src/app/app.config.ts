@@ -2,7 +2,7 @@ import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom, Com
 import { provideRouter } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { LoadingInterceptor } from './loading.interceptor';
-export const routes = [
+ const routes = [
   { 
     path: '', 
     //component: HomeComponent

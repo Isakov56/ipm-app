@@ -13,6 +13,7 @@
     <h3>Flowers</h3>
     <!-- <button [tableData]="flowerData" [tableColumns]="flowerColumns" routerLink="/home-table">click</button> -->
     <button routerLink="/table-home">click</button>
+    
     <div>
         <app-table-module *ngIf="this.router.url === '/table-home'" [tableData]="flowerData" [tableColumns]="flowerColumns"></app-table-module>
     </div>
